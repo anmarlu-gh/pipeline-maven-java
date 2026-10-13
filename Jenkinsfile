@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-	stage('Checkout') {
-            steps {
-                // Checkout the code from the repository
-                git branch: 'main', url: 'https://github.com/ApasoftTraining/pipeline-maven-java.git'
-            }
-        }
         stage('Build') {
             steps {
                 echo 'Building...'
@@ -33,7 +27,7 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 // Run the Java program with an example argument
-                sh 'java -cp target/your-app-1.0-SNAPSHOT.jar com.apasoft.ToUpper "example text"'
+                sh 'java -cp target/your-app-1.0-SNAPSHOT.jar com.apasoft.ToUpper "${Cadena}"'
             }
         }
     }
